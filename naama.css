@@ -1,0 +1,43 @@
+
+html {
+	color: black;
+	background-color: #777;
+}
+
+body {
+	max-width: 640px;
+	margin: 2em auto;
+	padding: 1em;
+	color: black;
+	background-color: #ddd;
+	border: solid 1px #444;
+}
+
+header {
+	text-align: center;
+}
+
+h1, h2, h3 {
+	margin-left: 1em;
+}
+
+figure {
+	max-width: 300px;
+	display: block;
+	margin: 1.2em auto;
+}
+
+img {
+	border: solid 1px black;
+}
+
+figcaption {
+	margin-top: 8px;
+	font-size: 11pt;
+	text-align: center;
+}
+
+p {
+	font-size: 12pt;
+	text-align: justify;
+}
