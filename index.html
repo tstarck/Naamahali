@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Naamanhakurobotti</title>
+<title>Naamahali</title>
 <link rel="stylesheet" href="naama.css" type="text/css" />
 </head>
 <body>
 
 <header>
 <h1>Robottiohjelmoinnin harjoitustyö<br />
-<i>Naamanhakurobotti</i></h1>
+<i>Naamahali</i></h1>
 <address>
 Tuomas Starck<br />
 tuomas.starck@helsinki.fi
@@ -16,23 +16,23 @@ tuomas.starck@helsinki.fi
 </header>
 
 <h2>Kuvaus</h2>
-<p>Naamanhakurobotti tunnistaa kasvot ja hakeutuu niiden luo. Kasvojentunnistus toteutetaan Android-laitteella, jossa tulee olla kamera. Robottia liikuttaa NXT-yksikkö, johon on liitetty kaksi moottoria. Edellä mainitut komponentit viestivät Bluetooth-yhteyden avulla.</p>
-<p>Robotti toimii vain suhteellisen tasaisella alustalla ja riittävästi valaistuissa tiloissa. Se ei osaa väistää esteitä liikkuessaan. Kasvojentunnistus myös tuottaa usein virheellisiä havaintoja ja tunnistaa kasvot oikein vain silloin, kun ne ovat jo melko lähellä.</p>
+<p>Naamahali on robotti, joka tunnistaa ihmisen kasvot ja hakeutuu niiden luo. Kasvojentunnistus toteutetaan Android-laitteella, jossa on kamera. Robottia liikuttaa kahden moottorin Lego Mindstorm NXT-yksikkö. Robotin laitteet viestivät Bluetooth-yhteyden avulla.</p>
+<p>Robotti toimii vain tasaisella alustalla ja riittävästi valaistuissa tiloissa. Se ei osaa väistää esteitä liikkuessaan. Kasvojentunnistus tuottaa ajoittain virheellisiä positiivisia havaintoja ja tunnistaa kasvot oikein vain silloin, kun ne ovat jo melko lähellä.</p>
 
 <h2>Rakenne</h2>
 
 <h3>Yleistä</h3>
 
-<p>Naamanhakurobotissa on kaksi rinnakkain asennettua motoroitua pyörää ja kolmas passivinen pyörä tukipisteenä. NXT-yksikkö on kiinnitetty moottoreihin 45 asteen kulmaan ja toimii alustana Android-laitteelle. Robotti ei hyödynnä mitään Lego Mindstorm -sensoreita. Rakenne ei ole erityisen tukeva, mutta yksinkertainen ja käyttötarkoitukseen riittävä. Robotin ohjaamiseen tarvittavat pyörien halkaisija ja akseliväli ovat 5,66 ja 16,66 mittayksikköä.</p>
+<p>Robotissa on kaksi rinnakkain asennettua motoroitua pyörää ja kolmas passivinen pyörä tukipisteenä. NXT-yksikkö on kiinnitetty moottoreihin 45 asteen kulmaan ja toimii tukena Android-laitteelle. Robotti ei hyödynnä mitään Lego Mindstorm -sensoreita. Rakenne ei ole erityisen tukeva, mutta yksinkertainen ja käyttötarkoitukseen riittävä. Robotin ohjaamiseen tarvittavat pyörien halkaisija ja akseliväli ovat 5,66 ja 16,66 mittayksikköä.</p>
 
 <figure>
 <a href="m/0225.jpg"><img src="xs/0225.jpg" alt="Yleiskuva" /></a>
-<figcaption>Kuvassa näkyvä on ultraäänisensori on pelkkä suunnitteluvaiheelta jäänyt proppi, sillä Naamanhakurobotti ei hyödynnä sitä millään tavalla.<figcaption>
+<figcaption>Kuvassa näkyvä on ultraäänisensori on pelkkä suunnitteluvaiheelta jäänyt proppi, sillä Naamahali ei hyödynnä sitä millään tavalla.<figcaption>
 </figure>
 
 <h3>Keskipalkki</h3>
 
-<p>Android-laite telakoituu NXT-yksikön ja kolmen tukipalkin varaan. Telakan sopivuus on testattu ainoastaan HTC Desire -puhelimen kanssa, joten muiden laitteiden käyttö voi vaatia muutoksia tukirakenteisiin. Kuvissa näkyvä ultraäänisensori ei ole oleellinen osa Naamanhakurobottia eikä robotin ohjelmisto hyödynnä sitä. Keskimmäisen tukipalkin voi rakentaa ilman mitään sensoria tai ultraäänisensorin voi korvata muilla osilla.</p>
+<p>Android-laite telakoituu NXT-yksikön ja kolmen tukipalkin varaan. Telakan sopivuus on testattu ainoastaan HTC Desire -puhelimen kanssa, joten muiden laitteiden käyttö voi vaatia muutoksia tukirakenteisiin. Kuvissa näkyvä ultraäänisensori ei ole oleellinen osa Naamahalia eikä robotin ohjelmisto hyödynnä sitä. Keskimmäisen tukipalkin voi rakentaa ilman mitään sensoria tai ultraäänisensorin voi korvata muilla osilla.</p>
 
 <figure>
 <a href="m/0222.jpg"><img src="xs/0222.jpg" alt="Telakka" /></a>
@@ -55,18 +55,57 @@ tuomas.starck@helsinki.fi
 
 <h3>Kolmas pyörä</h3>
 
-<p>Takapyörän rakennetta säätämällä voi muuttaa muun robotin kallistuskulmaa. Koska takapyörä liikkuu sivusuunnassa robotin kääntyessä, takapyörän niveltäminen voisi parantaa ohjattavuutta. Kuvassa näkyvä yksinkertainen rakenne osoittautui kuitenkin testeissä riittäväksi sallimaan robotin sujuvan kääntymisen.</p>
+<p>Takapyörän rakennetta säätämällä voi muuttaa muun robotin kallistuskulmaa. Koska takapyörä liikkuu sivusuunnassa robotin kääntyessä, takapyörän niveltäminen voi parantaa ajettavuutta. Kuvassa näkyvä yksinkertainen rakenne osoittautui kuitenkin testeissä riittäväksi sallimaan robotin sujuvan kääntymisen tasaisella alustalla.</p>
 
 <figure>
 <a href="m/0224.jpg"><img src="xs/0224.jpg" alt="Takapyörä" /></a>
 <figcaption>Takapyörä kiinnitetään ilman kumirengasta kitkan minimoimiseksi.<figcaption>
 </figure>
 
-<h2>Koodin rakenne</h2>
+<h2>Ohjelmisto</h2>
+
+<p>Koska Naamahali koostuu kahdesta erillisestä laitteesta, vaatii se myös kaksi erillistä ohjelmistoa toimiakseen.</p>
+
+<h3>Naamapallo</h3>
+
+<p>Naamapallo on NXT-yksikössä Lejos-virtuaalikoneella toimiva robottiohjelmisto, joka vastaanottaa Bluetooth-viestejä ja ohjaa moottoreita niiden perusteella. Naamapallon käyttö vaatii Lejos NXJ -ympäristön, joka on saatavilla osoitteesta <a href="http://lejos.sourceforge.net">lejos.sourceforge.net</a>. Naamapallo on testattu NXJ version 0.9.1 kanssa.</p>
+
+<p></p>
+
+<h3>Naamakyyla</h3>
+
+<p>Naamakyylä on Android-laitteella toimiva ohjelmisto, joka tunnistaa ihmisten kasvoja ja lähettää Bluetooth-viestejä NXT-yksikölle. Naamakyylän käyttö vaatii kamerallisen Android-laitteen, jonka API-versio on vähiintään 8 (eli Android 2.2 "Froyo"), Android SDK:n ja Android-version OpenCV-konenäkökirjastosta (testattu versio 2.3.1 beta2).</p>
+
+<p></p>
 
 <h2>Testaus</h2>
 
 <h2>Rajoitukset</h2>
+
+<h3>Kasvojentunnistus</h3>
+
+<ul>
+<li>Kasvojentunnistus antaa ajoittain virheellisiä positiivisia havaintoja.</li>
+<li>Vain suorassa olevat kasvot tunnistetaan. Pään kallistaminen estää niiden tunnistamisen.</li>
+<li>Mikäli kuvasta tunnistetaan useampi kasvo, niistä valitaan vain yksi, jonka perusteella robottia ohjataan. Valinta tehdään näennäisen satunnaisesti ilman jatkuvuutta (ei tunnisteta johdonmukaisesti samaa kasvoa peräkkäisissä havainnoissa).</li>
+<li>Vain kasvot, jotka ovat riittävän lähellä eli täyttävät tarpeeksi suuren osan kuvasta (100*100 px), tunnistetaan. Kasvojen tunnistusherkkyyttä voi madaltaa, mutta samalla virheellisten havaintojen määrä kasvaa ja tunnistus muuttuu laskennallisesti vaativammaksi.</li>
+</ul>
+
+<h3>Koodi</h3>
+
+<ul>
+<li>Naamapallon säikeiden välinen viestintä ei ole loppuun saakka säieturvallinen. (Ks. @fixme Tiedote.java)</li>
+<li>Naamakyylän kasvojentunnistuskoodi ja Bluetooth-koodi ovat rumasti samassa luokassa sekaisin. Bluetooth-koodin refaktorointi omaksi luokaksi (ja säikeeksi) parantaisi huomattavasti koodin laatua. (Ks. NaamanTunnistus.java)</li>
+</ul>
+
+<h3>Mekaniikka</h3>
+
+<ul>
+<li>Naamahalin takapyörä ei sovellu pehmeällä alustalla liikkumiseen. Pyörän niveltäminen korjaisi tilanteen.</li>
+<li>Moottoreiden kiinnitys NXT-yksikköön on heikko ja voi osoittautua riittämättömäksi, mikäli robotin massa kasvaa jatkokehityksessä.</li>
+</ul>
+
+<p>Jatkokehityksen kannalta on hyvä huomata, ettei yhtäkään Mindstorm-pakkauksen sensoria hyödynnetä millään tavalla. Esimerkiksi ultraäänisensorin avulla robotin saisi välttämään esteisiin törmäämisen. Kosketussensorista voisi tehdä on/off-painikkeen.</p>
 
 <h2>Käyttöohje</h2>
 
