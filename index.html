@@ -87,6 +87,16 @@ tuomas.starck@helsinki.fi
 <dt>minimi</dt><dd>Kasvojen minimikoko pikseleinä.</dd>
 </dl>
 
+<h3>Bluetooth</h3>
+
+<p>Naamakyylä lähettää Naamapallolle yhden kokonaisluvun (Java Integer, 32-bit) Bluetooth-viestejä, joihin on koodattu tarvittava tieto robotin liikuttamiseksi seuraavalla tavalla:</p>
+
+<dl>
+<dt>Viesti on 0:</dt><dd>Kasvot ovat oikeassa kohdassa kuvaa ja robotti voi olla paikoillaan.</dd>
+<dt>Viesti on 1:</dt><dd>Kasvot ovat keskellä kuvaa, mutta alhaalla. Robotin tulee ajaa suoraan eteenpäin.</dd>
+<dt>Bitit 1–8 ovat 2:</dt><dd>Kasvot ovat kuvan sivulla, joten robotin täytyy kääntyä. Tarvittava kääntymiskulma on kokonaisluku väliltä 0–88 ja se on koodattu viestin bitteihin 9–16. Luku 0 tarkoittaa 44° käännöstä vasemmalle ja vastaavasti 88 yhtä suurta käännöstä oikealle.</dd>
+</dl>
+
 <!--
 <h2>Testaus</h2>
 -->
