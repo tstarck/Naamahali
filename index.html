@@ -19,7 +19,7 @@ tuomas.starck@helsinki.fi
 <p>Naamahali on robotti, joka tunnistaa ihmisen kasvot ja hakeutuu niiden luo. Kasvojentunnistus toteutetaan Android-laitteella, jossa on kamera. Robottia liikuttaa kahden moottorin Lego Mindstorm NXT-yksikkö. Robotin laitteet viestivät Bluetooth-yhteyden avulla.</p>
 <p>Robotti toimii vain tasaisella alustalla ja riittävästi valaistuissa tiloissa. Se ei osaa väistää esteitä liikkuessaan. Kasvojentunnistus tuottaa ajoittain virheellisiä positiivisia havaintoja ja tunnistaa kasvot oikein vain silloin, kun ne ovat jo melko lähellä.</p>
 
-<h2>Rakenne</h2>
+<h2 id="rakenne">Rakenne</h2>
 
 <h3>Yleistä</h3>
 
@@ -53,7 +53,7 @@ tuomas.starck@helsinki.fi
 <figcaption>Oikean puolen moottori. Vasen moottorirakenne on suora peilikuva oikeasta.<figcaption>
 </figure>
 
-<h3>Kolmas pyörä</h3>
+<h3 id="ee">Kolmas pyörä</h3>
 
 <p>Takapyörän rakennetta säätämällä voi muuttaa muun robotin kallistuskulmaa. Koska takapyörä liikkuu sivusuunnassa robotin kääntyessä, takapyörän niveltäminen voi parantaa ajettavuutta. Kuvassa näkyvä yksinkertainen rakenne osoittautui kuitenkin testeissä riittäväksi sallimaan robotin sujuvan kääntymisen tasaisella alustalla.</p>
 
@@ -66,19 +66,30 @@ tuomas.starck@helsinki.fi
 
 <p>Koska Naamahali koostuu kahdesta erillisestä laitteesta, vaatii se myös kaksi erillistä ohjelmistoa toimiakseen.</p>
 
-<h3>Naamapallo</h3>
+<h3 id="naamapallo">Naamapallo</h3>
 
 <p>Naamapallo on NXT-yksikössä Lejos-virtuaalikoneella toimiva robottiohjelmisto, joka vastaanottaa Bluetooth-viestejä ja ohjaa moottoreita niiden perusteella. Naamapallon käyttö vaatii Lejos NXJ -ympäristön, joka on saatavilla osoitteesta <a href="http://lejos.sourceforge.net">lejos.sourceforge.net</a>. Naamapallo on testattu NXJ version 0.9.1 kanssa.</p>
 
-<p></p>
+<p>Ohjelma koostuu kolmesta luokasta. <i>Naamapallo</i> on pääluokka, joka käynnistää muut toiminnot ja vastaa moottoreiden ohjauksesta. <i>Sinihammas</i> luo Bluetooth-palvelimen omaksi säikeekseen ja jää kuuntelemaan yhteydenottoa Android-laitteelta. Bluetooth-yhteyden toimiessa, säikeet viestivät keskenään <i>Tiedote</i>-luokan avulla.</p>
 
-<h3>Naamakyyla</h3>
+<h3 id="naamakyyla">Naamakyyla</h3>
 
-<p>Naamakyylä on Android-laitteella toimiva ohjelmisto, joka tunnistaa ihmisten kasvoja ja lähettää Bluetooth-viestejä NXT-yksikölle. Naamakyylän käyttö vaatii kamerallisen Android-laitteen, jonka API-versio on vähiintään 8 (eli Android 2.2 "Froyo"), Android SDK:n ja Android-version OpenCV-konenäkökirjastosta (testattu versio 2.3.1 beta2).</p>
+<p>Naamakyylä on Android-laitteella toimiva ohjelmisto, joka tunnistaa ihmisten kasvoja ja lähettää Bluetooth-viestejä NXT-yksikölle. Naamakyylän käyttö vaatii kamerallisen Android-laitteen, jonka API-versio on vähiintään 8 (eli Android 2.2 "Froyo"), Android SDK:n <a class="ext" href="http://developer.android.com/sdk/">&#8663;</a> ja Android-version OpenCV-konenäkökirjastosta <a class="ext" href="http://opencv.itseez.com/doc/tutorials/introduction/android_binary_package/android_binary_package.html">&#8663;</a> (testattu versio 2.3.1 beta2).</p>
 
-<p></p>
+<p><i>NaamakyylaActivity</i> on minimaalinen Android Activity ja toimii Naamakyylän aloituspisteenä. Suoritus siirretään luokalle <i>NaamanTunnistus</i>, joka periytyy luokasta <i>KameranKaepistely</i>. <i>KameranKaepistely</i> toimii omassa säikeessään, se vastaa Android-kameran alustuksesta ja käytöstä, ja se on lähes suoraan peräisin OpenCV Android kasvojentunnistusesimerkkikoodista. Naamakyylää varten siihen on tehty vain triviaaleja muutoksia.</p>
 
+<p><i>NaamanTunnistus</i>-luokan konstruktori alustaa kasvojentunnistus- ja Bluetooth-koodit sekä määrittelee <i>processFrame</i>-metodin, joka ottaa vastaan kameralta saadun kuvan ja kutsuu OpenCV:n hahmontunnistusta. Mikäli kuvasta löytyy kasvot, niistä valitaan yksi ja kasvojen sijainnin perusteella lähetetään Bluetooth-viesti Naamapallolle. <i>NaamanTunnistus</i>-luokalla on muuttujia, joilla voi helposti säätää Naamakyylän toimintaa:</p>
+
+<dl>
+<dt id="nxtmac">NXT_MAC</dt><dd>Käytössä olevan NXT-yksikön Bluetooth MAC-osoite. Vain tähän MAC-osoitteeseen yritetään ottaa yhteys, joten oikean arvon asettaminen on kriittistä Naamakyylän toimimiseksi.</dd>
+<dt>kohde</dt><dd>Kohderuutu, johon kasvot yritetään osuttaa.</dd>
+<dt>keskus</dt><dd>Kuvan keskiö. Jos kasvot ovat tällä alueella, ei tarvitse kääntyä.</dd>
+<dt>minimi</dt><dd>Kasvojen minimikoko pikseleinä.</dd>
+</dl>
+
+<!--
 <h2>Testaus</h2>
+-->
 
 <h2>Rajoitukset</h2>
 
@@ -94,8 +105,10 @@ tuomas.starck@helsinki.fi
 <h3>Koodi</h3>
 
 <ul>
-<li>Naamapallon säikeiden välinen viestintä ei ole loppuun saakka säieturvallinen. (Ks. @fixme Tiedote.java)</li>
+<li>Naamapallo ei autentikoi Bluetooth-yhteyttä vaan hyväksyy ensimmäisen yhteydenoton sellaisenaan. Hyökkääjä pääsee mm. ohjaamaan robottia mielivaltaisesti.</li>
+<li>Naamapallon säikeiden välinen viestintä ei ole täysin säieturvallinen. (Ks. @fixme Tiedote.java)</li>
 <li>Naamakyylän kasvojentunnistuskoodi ja Bluetooth-koodi ovat rumasti samassa luokassa sekaisin. Bluetooth-koodin refaktorointi omaksi luokaksi (ja säikeeksi) parantaisi huomattavasti koodin laatua. (Ks. NaamanTunnistus.java)</li>
+<li>Naamakyylän suoritus keskeytyy mikäli Android-laite menee virransäästötilaan. (Ks. <a href="http://en.wikicode.org/index.php/Dont_lower_the_brightness_of_the_screen_in_android">Wake lock</a>)</li>
 </ul>
 
 <h3>Mekaniikka</h3>
@@ -108,6 +121,18 @@ tuomas.starck@helsinki.fi
 <p>Jatkokehityksen kannalta on hyvä huomata, ettei yhtäkään Mindstorm-pakkauksen sensoria hyödynnetä millään tavalla. Esimerkiksi ultraäänisensorin avulla robotin saisi välttämään esteisiin törmäämisen. Kosketussensorista voisi tehdä on/off-painikkeen.</p>
 
 <h2>Käyttöohje</h2>
+
+<ol>
+<li><a href="#rakenne">Rakenna</a> Naamapallo.</li>
+<li>Asenna <a href="#naamakyyla">Android-kehitysympäristö</a>.</li>
+<li>Aseta oikea osoite muuttujaan NaamanTunnistus#<a href="#nxtmac">NXT_MAC</a>.</li>
+<li>Käännä Naamakyylä ja <a href="http://developer.android.com/guide/developing/device.html">asenna</a> se kohdelaitteelle.</li>
+<li>Asenna <a href="http://lejos.sourceforge.net/">Lejos</a>-kehitysympäristö.</li>
+<li>Käännä ja asenna Naamapallo NXT-yksiköön.</li>
+<li>Käynnistä Naamapallo.</li>
+<li>Käynnistä Naamakyylä. Tässä järjestyksessä, sillä Naamapallon Bluetooth-palvelin täytyy olla valmiina vastaanottamaan yhteys.</li>
+<li>Aseta Android-laite Naamahalin telakkaan ja leiki!</li>
+</ol>
 
 </body>
 </html>

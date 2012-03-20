@@ -5,20 +5,17 @@ html {
 }
 
 body {
-	max-width: 640px;
+	max-width: 700px;
 	margin: 2em auto;
-	padding: 1em;
+	padding: 25px;
 	color: black;
 	background-color: #ddd;
 	border: solid 1px #444;
 }
 
 header {
+	margin: 4em 1em 6em 1em;
 	text-align: center;
-}
-
-h1, h2, h3 {
-	margin-left: 1em;
 }
 
 figure {
@@ -37,7 +34,43 @@ figcaption {
 	text-align: center;
 }
 
+h2 {
+	border-top: dashed 1px black;
+	margin-top: 2em;
+}
+
+h3:before {
+	content: "+ ";
+}
+
 p {
 	font-size: 12pt;
 	text-align: justify;
+}
+
+a.ext {
+	text-decoration: none;
+}
+
+dl > dt {
+	font: bold 11pt monospace;
+}
+
+ul > li {
+	list-style-type: none;
+}
+
+ul > li:before {
+	content: "– ";
+}
+
+ol > li {
+	padding-top: 0.2em;
+}
+
+#ee:hover:after {
+	content: " pun intended!";
+	margin-left: 1em;
+	font-size: 8pt;
+	color: #444;
 }
